@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="done">
+    <output-path>$PROJECT_DIR$/out/artifacts/done</output-path>
+    <root id="archive" name="done.jar">
+      <element id="module-output" name="NgocRong_Server" />
+      <element id="library" level="project" name="Lib_Done" />
+    </root>
+  </artifact>
+</component>

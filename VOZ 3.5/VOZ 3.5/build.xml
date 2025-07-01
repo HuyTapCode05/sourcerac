@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="NroVOZ" default="default" basedir=".">
+    <description>Builds, obfuscates, and runs the project NroVOZ.</description>
+
+    <import file="nbproject/build-impl.xml"/>
+
+    <!-- Chạy ProGuard sau khi biên dịch -->
+    <target name="-post-compile">
+        <echo message="🔄 Đang làm rối mã nguồn bằng ProGuard..." />
+        <exec executable="java" failonerror="true">
+            <arg value="-jar" />
+            <arg value="C:/proguard/lib/proguard.jar" />
+            <arg value="@proguard.pro" />
+        </exec>
+        <echo message="✅ Mã nguồn đã được làm rối!" />
+    </target>
+
+    <!-- Tạo file MANIFEST.MF -->
+    <target name="-pre-jar">
+        <echo message="📦 Đang tạo JAR với MANIFEST.MF..." />
+        <mkdir dir="META-INF"/>
+        <echo message="Main-Class: server.ServerManager" file="META-INF/MANIFEST.MF"/>
+
+
+        <!-- Đóng gói JAR -->
+        <jar destfile="dist/1.jar" manifest="META-INF/MANIFEST.MF">
+            <fileset dir="build/classes"/>
+        </jar>
+    </target>
+</project>
